@@ -1,6 +1,11 @@
 {
 	"run_list":[
+		"yum::remi",
 		"httpd",
-		"iptables_stop"	
+		"iptables_stop",
+		"vim",
+		"git",
+		"php",
+		"mysql"	
 	]
 }
