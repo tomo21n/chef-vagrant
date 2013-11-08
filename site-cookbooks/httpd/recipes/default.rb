@@ -1,4 +1,4 @@
-#
+
 # Cookbook Name:: httpd
 # Recipe:: default
 #
@@ -14,3 +14,19 @@ service "httpd" do
   action [ :enable , :start ]
 end
 
+directory "/var/www/html" do
+  action :delete
+end
+
+directory "/vagrant/www/" do
+  owner "vagrant"
+  group "vagrant"
+  action :create
+end
+
+bash "install_something" do
+  user "root"
+  code <<-EOH
+  ln -fs /vagrant/www var/www/html
+  EOH
+end
